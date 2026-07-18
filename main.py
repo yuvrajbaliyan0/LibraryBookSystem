@@ -1,36 +1,37 @@
 #An Library Book System
 class Library:
     def __init__(self):
-        self.Books = []
+        self.books = []
     
     def add_book(self,Book):
-        self.Books.append(Book)
+        self.books.append(Book)
     
     def remove_book(self,Book):
-        self.Books.remove(Book)
+        self.books.remove(Book)
     
     def count_book(self):
-        return len(self.Books)
+        print("\nNumber Of Books")
+        return len(self.books)
     
-    def Filter_by_genre(self,Genre):
-        FilteredBook =[]
-        for book in self.Books:
+    def filter_by_genre(self,Genre):
+        print(f"\nBooks By {Genre}")
+        filterlist = []
+        for book in self.books:
             if book.genre == Genre:
-                FilteredBook.append(f"{book.name} by {book.author}")
-        return FilteredBook
+                filterlist.append(book)
+        return filterlist
 
-    
-    
+
 class Book:
     def __init__(self,Name,Author,Genre):
-        self.name = Name 
-        self.author = Author 
-        self.genre = Genre 
+        self.name = Name
+        self.author = Author
+        self.genre = Genre
+    
     def __str__(self):
-        return f"{self.name},{self.author},{self.genre}"
+        return f"Name : {self.name},Author : {self.author},Genre : {self.genre}"
 
 stack = Library()
-
 #ADD................................................................................................................
 
 #Book1
@@ -54,15 +55,12 @@ stack.add_book(book6)
 
 #DELETE...............................................................................................................
 stack.remove_book(book2)
-
-for book in stack.Books:
-    print(book)
-
 #COUNT.....................................................................................................................
 print(stack.count_book())
 
-for book in stack.Filter_by_genre("Self-Help"):
+for book in stack.books:
     print(book)
 
 
-
+for book in stack.filter_by_genre("Self-Help"):
+    print(f"\n{book}")
